@@ -1,0 +1,12 @@
+# Node files
+node_modules
+
+# OS junk files
+.DS_Store
+
+# Project specific stuff
+.cache-loader
+@coverage
+*.log
+dist
+build

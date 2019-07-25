@@ -1,0 +1,62 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>fc-whiteboard</title>
+    <style>
+      #demos {
+        display: flex;
+        align-items: center;
+      }
+
+      #demos a {
+        margin-left: 16px;
+      }
+
+      #root-wrapper {
+        width: 500px;
+        height: 600px;
+        top: 50px;
+        position: absolute;
+      }
+
+      #root {
+        height: 500px;
+      }
+
+      #root-mirror-wrapper {
+        width: 500px;
+        height: 600px;
+        top: 50px;
+        right: 16px;
+        position: absolute;
+      }
+
+      #root-mirror {
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body style="height:1000px">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="demos">
+      <h3>Other Demos</h3>
+      <a href="./drawboard.html">Drawboard</a>
+      <a href="./whiteboard-replay.html">Whiteboard Replay</a>
+    </div>
+    <div id="root-wrapper">
+      <h1>Presentation Screen</h1>
+      <div id="root"></div>
+    </div>
+    <div id="root-mirror-wrapper">
+      <h1>Audience Screen</h1>
+      <div id="root-mirror"></div>
+    </div>
+
+    <script>
+      window.__DEV_APP__ = {};
+    </script>
+    <script src="./index.js"></script>
+  </body>
+</html>

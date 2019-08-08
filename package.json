@@ -26,9 +26,9 @@
     ]
   },
   "scripts": {
-    "bootstrap": "lerna clean --yes && lerna bootstrap",
-    "build": "npm run clean && lerna exec -- npm run build",
-    "clean": "lerna run clean --parallel",
+    "bootstrap": "npm run clean && yarn install",
+    "build": "npm run clean && yarn workspaces run build",
+    "clean": "yarn workspaces run clean",
     "cleanCov": "rimraf @coverage",
     "dev": "webpack-dev-server --config ./scripts/webpack/webpack.config.dev.js --hot",
     "lint": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
@@ -81,5 +81,10 @@
     "webpack-dashboard": "3.0.0",
     "webpack-dev-server": "^3.2.1",
     "workerize-loader": "^1.0.4"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "packages/fc-whiteboard",
+    "packages/fc-whiteboard-react"
+  ]
 }

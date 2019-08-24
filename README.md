@@ -398,7 +398,9 @@ this.onChange({ target: 'marker', id: this.id, event: 'moveMarker', marker: { dx
 
 此外，前往 [xCompass](https://wx-chevalier.github.io/home/#/search) 交互式地检索、查找需要的文章/链接/书籍/课程；或者在在 [MATRIX 文章与代码索引矩阵](https://github.com/wx-chevalier/Developer-Zero-To-Mastery)中查看文章与项目源代码等更详细的目录导航信息。最后，你也可以关注微信公众号：『**某熊的技术之路**』以获取最新资讯。
 
-# Motivation & Credits
+# About
+
+## Motivation & Credits
 
 - [markerjs](https://markerjs.com/)
 - [WeOutline](https://github.com/ipeychev/weoutline): WeOutline is a shared whiteboard, designed to work among distributed teams

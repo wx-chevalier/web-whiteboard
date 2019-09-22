@@ -8,7 +8,7 @@ Web whiteboard screencasting(both live and playback mode) with background slides
 
 在很多培训、协作、在线演讲的场景下，我们需要有电子白板的功能，能够方便地在演讲者与听众之间共享屏幕、绘制等信息。[fc-whiteboard https://parg.co/NiK](https://github.com/wx-chevalier/fractal-components/tree/master/fc-whiteboard) 是 Web 在线白板组件库，支持实时直播（一对多）与回放两种模式，其绘制版也能够独立使用。fc-whiteboard 内置了 EventHub，只需要像 [Mushi-Chat](https://github.com/wx-chevalier/Mushi-Chat) 这样提供简单的 WebSocket 服务端，即可快速构建实时在线共享电子白板。
 
-web-whiteboard 是 [fractal-components](https://github.com/wx-chevalier/fractal-components) 项目的一部分。
+web-whiteboard 是 [fractal-components](https://github.com/wx-chevalier/fractal-components) 项目的一部分，其使用的项目模板源自 [m-fe-rtw](https://github.com/wx-chevalier/m-fe-rtw)。
 
 # Usage | 使用
 

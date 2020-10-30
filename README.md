@@ -405,4 +405,7 @@ this.onChange({ target: 'marker', id: this.id, event: 'moveMarker', marker: { dx
 ## Motivation & Credits
 
 - [markerjs](https://markerjs.com/)
+
 - [WeOutline](https://github.com/ipeychev/weoutline): WeOutline is a shared whiteboard, designed to work among distributed teams
+
+- [screenshots](https://github.com/nashaofu/screenshots): electron 截图插件和 react 截图界面插件

@@ -1,3 +1,15 @@
+import {
+  ArrowSvg,
+  CheckSvg,
+  CoverSvg,
+  DragSvg,
+  EraserSvg,
+  HighlightSvg,
+  LineSvg,
+  RectSvg,
+  TextSvg,
+  TimesSvg,
+} from '../assets/svg';
 import { LineMarker } from '../markers/LineMarker';
 import { WhitePage } from '../whiteboard/WhitePage/index';
 
@@ -8,77 +20,80 @@ import { RectMarker } from './../markers/RectMarker/index';
 import { TextMarker } from './../markers/TextMarker/index';
 import { ToolbarItem } from './ToolbarItem';
 
-const OkIcon = require('../assets/check.svg');
-const DeleteIcon = require('../assets/eraser.svg');
-const CloseIcon = require('../assets/times.svg');
+const OkIcon = CheckSvg;
+const DeleteIcon = EraserSvg;
+const CloseIcon = TimesSvg;
 
 export const dragToolbarItem = new ToolbarItem({
   name: 'drag',
   tooltipText: 'Drag',
-  icon: require('../assets/drag.svg')
+  icon: DragSvg,
 });
 
 export const highlightMarkerToolbarItem = new ToolbarItem({
   name: 'cover-marker',
   tooltipText: 'Hightlight',
   shortcut: 'Shift+H',
-  icon: require('../assets/highlight.svg'),
+  icon: HighlightSvg,
   markerType: HighlightMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const arrowMarkerToolbarItem = new ToolbarItem({
   name: 'arrow-marker',
   tooltipText: 'Arrow',
   shortcut: 'Shift+A',
-  icon: require('../assets/arrow.svg'),
+  icon: ArrowSvg,
   markerType: ArrowMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const textMarkerToolbarItem = new ToolbarItem({
   name: 'text-marker',
   tooltipText: 'Text',
   shortcut: 'Shift+T',
-  icon: require('../assets/text.svg'),
+  icon: TextSvg,
   markerType: TextMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const coverMarkerToolbarItem = new ToolbarItem({
   name: 'cover-marker',
   tooltipText: 'Cover',
   shortcut: 'Shift+C',
-  icon: require('../assets/cover.svg'),
+  icon: CoverSvg,
   markerType: CoverMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const rectMarkerToolbarItem = new ToolbarItem({
   name: 'rect-marker',
   tooltipText: 'Rectangle',
   shortcut: 'Shift+R',
-  icon: require('../assets/rect.svg'),
+  icon: RectSvg,
   markerType: RectMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const lineMarkerToolbarItem = new ToolbarItem({
   name: 'line-marker',
   tooltipText: 'Line',
   shortcut: 'Shift+L',
-  icon: require('../assets/line.svg'),
+  icon: LineSvg,
   markerType: LineMarker,
-  draggable: true
+  draggable: true,
 });
 
 export const closeToolbarItem = new ToolbarItem({
   icon: CloseIcon,
   name: 'close',
-  tooltipText: 'Close'
+  tooltipText: 'Close',
 });
 
-export const separatorToolbarItem = new ToolbarItem({ name: 'separator', tooltipText: '' });
+export const separatorToolbarItem = new ToolbarItem({
+  name: 'separator',
+  tooltipText: '',
+});
 
 export function getToolbars(page?: WhitePage) {
   const toolbars = [
@@ -90,14 +105,14 @@ export function getToolbars(page?: WhitePage) {
     {
       icon: DeleteIcon,
       name: 'delete',
-      tooltipText: 'Delete'
+      tooltipText: 'Delete',
     },
     rectMarkerToolbarItem,
     coverMarkerToolbarItem,
     highlightMarkerToolbarItem,
     lineMarkerToolbarItem,
     arrowMarkerToolbarItem,
-    textMarkerToolbarItem
+    textMarkerToolbarItem,
   ];
 
   if (!page) {
@@ -106,9 +121,9 @@ export function getToolbars(page?: WhitePage) {
         {
           icon: OkIcon,
           name: 'ok',
-          tooltipText: 'OK'
-        }
-      ]
+          tooltipText: 'OK',
+        },
+      ],
     );
   }
 

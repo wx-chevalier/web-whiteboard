@@ -1,7 +1,7 @@
 import { SyncEvent } from '../../event/SyncEvent';
 import { createDivWithClassName } from '../../utils/dom';
-import { AbstractWhiteboard } from '../AbstractWhiteboard/index';
 import { Mode } from '../../utils/types';
+import { AbstractWhiteboard } from '../AbstractWhiteboard/index';
 
 const prefix = 'fcw-board';
 
@@ -13,7 +13,10 @@ export class MirrorWhiteboard extends AbstractWhiteboard {
     // 为 target 添加子 imgs 容器
     this.imgsContainer = createDivWithClassName(`${prefix}-imgs`, this.target);
     // 为 target 添加子 pages 容器
-    this.pagesContainer = createDivWithClassName(`${prefix}-pages`, this.target);
+    this.pagesContainer = createDivWithClassName(
+      `${prefix}-pages`,
+      this.target,
+    );
 
     if (!this.eventHub) {
       throw new Error('Invalid eventHub');
@@ -66,7 +69,7 @@ export class MirrorWhiteboard extends AbstractWhiteboard {
       event: 'borderChangePage',
       id: this.id,
       target: 'whiteboard',
-      border: this.captureSnap()
+      border: this.captureSnap(),
     });
   }
 }

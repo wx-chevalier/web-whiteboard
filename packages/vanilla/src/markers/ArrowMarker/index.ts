@@ -1,7 +1,8 @@
-import { MarkerType } from './../types';
-import { LinearMarker } from '../LinearMarker';
 import { SvgHelper } from '../../renderer/SvgHelper';
 import { WhitePage } from '../../whiteboard/WhitePage';
+import { LinearMarker } from '../LinearMarker';
+
+import { MarkerType } from './../types';
 
 export class ArrowMarker extends LinearMarker {
   type: MarkerType = 'arrow';
@@ -21,7 +22,7 @@ export class ArrowMarker extends LinearMarker {
 
     const tip = SvgHelper.createPolygon(
       `0,0 ${this.ARROW_SIZE},${this.ARROW_SIZE / 2} 0,${this.ARROW_SIZE}`,
-      [['class', 'arrow-marker-tip']]
+      [['class', 'arrow-marker-tip']],
     );
     this.defs.push(
       SvgHelper.createMarker(
@@ -31,8 +32,8 @@ export class ArrowMarker extends LinearMarker {
         this.ARROW_SIZE,
         this.ARROW_SIZE - 1,
         this.ARROW_SIZE / 2,
-        tip
-      )
+        tip,
+      ),
     );
 
     this.markerLine.setAttribute('marker-end', 'url(#arrow-marker-head');

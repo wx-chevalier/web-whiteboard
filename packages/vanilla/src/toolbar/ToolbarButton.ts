@@ -16,7 +16,7 @@ export class ToolbarButton {
 
   constructor(
     toolbarItem: ToolbarItem,
-    clickHandler?: (ev: MouseEvent, toolbarItem: ToolbarItem) => void
+    clickHandler?: (ev: MouseEvent, toolbarItem: ToolbarItem) => void,
   ) {
     this.toolbarItem = toolbarItem;
 
@@ -27,7 +27,9 @@ export class ToolbarButton {
 
   public getElement = (): HTMLElement => {
     if (this.toolbarItem.onRender) {
-      this.container = this.toolbarItem.onRender().cloneNode(true) as HTMLDivElement;
+      this.container = this.toolbarItem
+        .onRender()
+        .cloneNode(true) as HTMLDivElement;
       return this.container;
     }
 
@@ -55,7 +57,7 @@ export class ToolbarButton {
         tippy(div, {
           content: this.toolbarItem.shortcut
             ? `${this.toolbarItem.tooltipText} ${this.toolbarItem.shortcut}`
-            : this.toolbarItem.tooltipText
+            : this.toolbarItem.tooltipText,
         });
       }
     } else {

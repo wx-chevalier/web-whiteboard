@@ -39,14 +39,14 @@
 
 .fc-whiteboard-toolbar-button:hover,
 .fc-whiteboard-toolbar-logo a:hover {
-  background-color: #eeeeee;
-  background: radial-gradient(#eeeeee, #cccccc);
-
+  background-color: #eee;
+  background: radial-gradient(#eee, #ccc);
   fill: #ff8080;
 }
 
 .fc-whiteboard-toolbar-button svg {
   height: 16px;
+  width:16px
 }
 
 .fc-whiteboard-indicator-container {

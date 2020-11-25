@@ -1,14 +1,21 @@
-import { ToolbarItem } from './../../toolbar/ToolbarItem';
-import { WhitePage } from '../WhitePage/index';
-import { createDivWithClassName } from '../../utils/dom';
-import { AbstractWhiteboard } from '../AbstractWhiteboard/index';
-import { Mode } from '../../utils/types';
+import {
+  BxLeftArrowSvg,
+  BxRightArrowSvg,
+  FinishSvg,
+  RollbackSvg,
+} from '../../assets/svg';
 import { separatorToolbarItem } from '../../toolbar/toolbar-items';
+import { createDivWithClassName } from '../../utils/dom';
+import { Mode } from '../../utils/types';
+import { AbstractWhiteboard } from '../AbstractWhiteboard/index';
+import { WhitePage } from '../WhitePage/index';
 
-const LeftArrowIcon = require('../../assets/bx-left-arrow.svg');
-const RightArrowIcon = require('../../assets/bx-right-arrow.svg');
-const FinishIcon = require('../../assets/finish.svg');
-const RollbackIcon = require('../../assets/rollback.svg');
+import { ToolbarItem } from './../../toolbar/ToolbarItem';
+
+const LeftArrowIcon = BxLeftArrowSvg;
+const RightArrowIcon = BxRightArrowSvg;
+const FinishIcon = FinishSvg;
+const RollbackIcon = RollbackSvg;
 
 const prefix = 'fcw-board';
 
@@ -25,7 +32,10 @@ export class Whiteboard extends AbstractWhiteboard {
     // 为 target 添加子 imgs 容器
     this.imgsContainer = createDivWithClassName(`${prefix}-imgs`, this.target);
     // 为 target 添加子 pages 容器
-    this.pagesContainer = createDivWithClassName(`${prefix}-pages`, this.target);
+    this.pagesContainer = createDivWithClassName(
+      `${prefix}-pages`,
+      this.target,
+    );
 
     this.initMaster();
 
@@ -46,14 +56,18 @@ export class Whiteboard extends AbstractWhiteboard {
       tooltipText: 'Prev',
       onClick: () => {
         const nextPageIndex =
-          this.visiblePageIndex - 1 < 0 ? this.pages.length - 1 : this.visiblePageIndex - 1;
+          this.visiblePageIndex - 1 < 0
+            ? this.pages.length - 1
+            : this.visiblePageIndex - 1;
 
-        document.querySelectorAll('.fc-whiteboard-indicator-current').forEach(e => {
-          e.innerHTML = `${nextPageIndex + 1}`;
-        });
+        document
+          .querySelectorAll('.fc-whiteboard-indicator-current')
+          .forEach(e => {
+            e.innerHTML = `${nextPageIndex + 1}`;
+          });
 
         this.onPageChange(nextPageIndex);
-      }
+      },
     };
 
     const indicatorContainer = document.createElement('div');
@@ -63,11 +77,13 @@ export class Whiteboard extends AbstractWhiteboard {
     indicatorCurrent.innerHTML = `${this.visiblePageIndex + 1}`;
 
     indicatorContainer.appendChild(indicatorCurrent);
-    indicatorContainer.appendChild(document.createTextNode(`/${this.sources.length}`));
+    indicatorContainer.appendChild(
+      document.createTextNode(`/${this.sources.length}`),
+    );
 
     const indicatorItem: ToolbarItem = {
       name: 'indicator',
-      onRender: () => indicatorContainer
+      onRender: () => indicatorContainer,
     };
 
     const nextToolbarItem = {
@@ -76,14 +92,18 @@ export class Whiteboard extends AbstractWhiteboard {
       tooltipText: 'Next',
       onClick: () => {
         const nextPageIndex =
-          this.visiblePageIndex + 1 > this.pages.length - 1 ? 0 : this.visiblePageIndex + 1;
+          this.visiblePageIndex + 1 > this.pages.length - 1
+            ? 0
+            : this.visiblePageIndex + 1;
 
-        document.querySelectorAll('.fc-whiteboard-indicator-current').forEach(e => {
-          e.innerHTML = `${nextPageIndex + 1}`;
-        });
+        document
+          .querySelectorAll('.fc-whiteboard-indicator-current')
+          .forEach(e => {
+            e.innerHTML = `${nextPageIndex + 1}`;
+          });
 
         this.onPageChange(nextPageIndex);
-      }
+      },
     };
 
     const finishItem: ToolbarItem = {
@@ -94,9 +114,9 @@ export class Whiteboard extends AbstractWhiteboard {
         this.emit({
           event: 'finish',
           id: this.id,
-          target: 'whiteboard'
+          target: 'whiteboard',
         });
-      }
+      },
     };
 
     const rollbackItem: ToolbarItem = {
@@ -106,7 +126,7 @@ export class Whiteboard extends AbstractWhiteboard {
       shortcut: 'ESC',
       onClick: () => {
         this.rollbackSnap();
-      }
+      },
     };
 
     // 初始化所有的 WhitePages
@@ -124,9 +144,9 @@ export class Whiteboard extends AbstractWhiteboard {
             nextToolbarItem,
             separatorToolbarItem,
             finishItem,
-            rollbackItem
-          ]
-        }
+            rollbackItem,
+          ],
+        },
       );
 
       // 这里隐藏 Dashboard 的图片源，Siema 切换的是占位图片
@@ -160,7 +180,7 @@ export class Whiteboard extends AbstractWhiteboard {
       event: 'borderChangePage',
       id: this.id,
       target: 'whiteboard',
-      border: this.captureSnap()
+      border: this.captureSnap(),
     });
   }
 
@@ -171,7 +191,7 @@ export class Whiteboard extends AbstractWhiteboard {
         event: 'borderSnap',
         id: this.id,
         target: 'whiteboard',
-        border: this.captureSnap(false)
+        border: this.captureSnap(false),
       });
     };
 

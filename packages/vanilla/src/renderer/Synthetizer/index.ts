@@ -6,7 +6,7 @@ export class Synthetizer {
     // target 是原图片
     target: HTMLImageElement,
     markerImage: SVGSVGElement,
-    done: (dataUrl: string) => void
+    done: (dataUrl: string) => void,
   ) {
     if (!isHTMLImageElement(target)) {
       throw new Error('Error: only support export to HTMLImageElement');
@@ -24,7 +24,13 @@ export class Synthetizer {
       throw new Error('Invalid ctx');
     }
 
-    ctx.drawImage(target as HTMLImageElement, 0, 0, canvas.width, canvas.height);
+    ctx.drawImage(
+      target as HTMLImageElement,
+      0,
+      0,
+      canvas.width,
+      canvas.height,
+    );
 
     const DOMURL = window.URL; // || window.webkitURL || window;
 

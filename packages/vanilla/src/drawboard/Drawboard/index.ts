@@ -18,7 +18,6 @@ import { BaseMarker } from './../../markers/BaseMarker/index';
 import { getToolbars } from './../../toolbar/toolbar-items';
 import { Source } from './../../utils/types';
 import { Baseboard } from './../Baseboard/index';
-
 import './index.css';
 
 export class Drawboard extends Baseboard {

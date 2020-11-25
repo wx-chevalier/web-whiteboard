@@ -1,6 +1,6 @@
 {
   "name": "@m-fe/whiteboard",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "main": "dist/cjs/index.js",
   "types": "dist/types/index.d.ts",
   "files": [
@@ -30,11 +30,9 @@
     "react": "^16.8.0",
     "react-dom": "^16.8.0",
     "siema": "^1.5.1",
-    "tippy.js": "^4.3.4",
-    "uuid": "^3.3.2"
+    "tippy.js": "^4.3.4"
   },
   "devDependencies": {
-    "@types/uuid": "^8.3.0",
     "copyfiles": "^2.1.0",
     "core-js": "^3.7.0",
     "prettier-plugin-pkg": "^0.8.0",

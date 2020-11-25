@@ -1,5 +1,6 @@
-import { MarkerType } from './../markers/types';
 import { PositionType } from '../utils/layout';
+
+import { MarkerType } from './../markers/types';
 
 export type MarkerEventType =
   // 添加

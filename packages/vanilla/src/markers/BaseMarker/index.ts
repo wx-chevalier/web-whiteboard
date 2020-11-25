@@ -1,11 +1,10 @@
-import * as uuid from 'uuid/v1';
-
 import { Drawboard } from '../../drawboard/Drawboard/index';
 import { EventType, onSyncFunc } from '../../event/SyncEvent';
 import { DomEventAware } from '../../renderer/DomEventAware/index';
 import { SvgHelper } from '../../renderer/SvgHelper';
 import { PositionType } from '../../utils/layout';
 import { isNil } from '../../utils/types';
+import { uuid } from '../../utils/uuid';
 import { MarkerSnap } from '../../whiteboard/AbstractWhiteboard/snap';
 import { WhitePage } from '../../whiteboard/WhitePage/index';
 import { MarkerType } from '../types';

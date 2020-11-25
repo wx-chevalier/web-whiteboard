@@ -1,9 +1,10 @@
 /** 通用的 Svg 助手 */
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class SvgHelper {
   public static createRect = (
     width: number | string,
     height: number | string,
-    attributes?: Array<[string, string]>
+    attributes?: Array<[string, string]>,
   ): SVGRectElement => {
     const rect = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
 
@@ -21,7 +22,7 @@ export class SvgHelper {
     y1: number | string,
     x2: number | string,
     y2: number | string,
-    attributes?: Array<[string, string]>
+    attributes?: Array<[string, string]>,
   ): SVGLineElement => {
     const line = document.createElementNS('http://www.w3.org/2000/svg', 'line');
 
@@ -38,9 +39,12 @@ export class SvgHelper {
 
   public static createPolygon = (
     points: string,
-    attributes?: Array<[string, string]>
+    attributes?: Array<[string, string]>,
   ): SVGPolygonElement => {
-    const polygon = document.createElementNS('http://www.w3.org/2000/svg', 'polygon');
+    const polygon = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'polygon',
+    );
 
     polygon.setAttribute('points', points);
     if (attributes) {
@@ -52,9 +56,12 @@ export class SvgHelper {
 
   public static createCircle = (
     radius: number,
-    attributes?: Array<[string, string]>
+    attributes?: Array<[string, string]>,
   ): SVGCircleElement => {
-    const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
+    const circle = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'circle',
+    );
 
     circle.setAttribute('cx', (radius / 2).toString());
     circle.setAttribute('cy', (radius / 2).toString());
@@ -66,7 +73,9 @@ export class SvgHelper {
     return circle;
   };
 
-  public static createGroup = (attributes?: Array<[string, string]>): SVGGElement => {
+  public static createGroup = (
+    attributes?: Array<[string, string]>,
+  ): SVGGElement => {
     const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
     if (attributes) {
       SvgHelper.setAttributes(g, attributes);
@@ -74,7 +83,10 @@ export class SvgHelper {
     return g;
   };
 
-  public static setAttributes = (el: SVGElement, attributes: Array<[string, string]>) => {
+  public static setAttributes = (
+    el: SVGElement,
+    attributes: Array<[string, string]>,
+  ) => {
     for (const [attr, value] of attributes) {
       el.setAttribute(attr, value);
     }
@@ -99,16 +111,19 @@ export class SvgHelper {
     markerHeight: number | string,
     refX: number | string,
     refY: number | string,
-    markerElement: SVGGraphicsElement
+    markerElement: SVGGraphicsElement,
   ): SVGMarkerElement => {
-    const marker = document.createElementNS('http://www.w3.org/2000/svg', 'marker');
+    const marker = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'marker',
+    );
     SvgHelper.setAttributes(marker, [
       ['id', id],
       ['orient', orient],
       ['markerWidth', markerWidth.toString()],
       ['markerHeight', markerHeight.toString()],
       ['refX', refX.toString()],
-      ['refY', refY.toString()]
+      ['refY', refY.toString()],
     ]);
 
     marker.appendChild(markerElement);
@@ -116,7 +131,9 @@ export class SvgHelper {
     return marker;
   };
 
-  public static createText = (attributes?: Array<[string, string]>): SVGTextElement => {
+  public static createText = (
+    attributes?: Array<[string, string]>,
+  ): SVGTextElement => {
     const text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
     text.setAttribute('x', '0');
     text.setAttribute('y', '0');
@@ -130,9 +147,12 @@ export class SvgHelper {
 
   public static createTSpan = (
     text: string,
-    attributes?: Array<[string, string]>
+    attributes?: Array<[string, string]>,
   ): SVGTSpanElement => {
-    const tspan = document.createElementNS('http://www.w3.org/2000/svg', 'tspan');
+    const tspan = document.createElementNS(
+      'http://www.w3.org/2000/svg',
+      'tspan',
+    );
     tspan.textContent = text;
 
     if (attributes) {

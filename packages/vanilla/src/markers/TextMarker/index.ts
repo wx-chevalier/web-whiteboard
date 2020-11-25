@@ -1,12 +1,13 @@
-import { MarkerType } from '../types';
-import { RectangularMarker } from '../RectangularMarker';
+import { CheckSvg, TimesSvg } from '../../assets/svg';
 import { SvgHelper } from '../../renderer/SvgHelper';
-import { WhitePage } from '../../whiteboard/WhitePage';
 import { PositionType } from '../../utils/layout';
 import { MarkerSnap } from '../../whiteboard/AbstractWhiteboard/snap';
+import { WhitePage } from '../../whiteboard/WhitePage';
+import { MarkerType } from '../types';
+import { RectangularMarker } from '../RectangularMarker';
 
-const OkIcon = require('../../assets/check.svg');
-const CancelIcon = require('../../assets/times.svg');
+const OkIcon = CheckSvg;
+const CancelIcon = TimesSvg;
 
 export class TextMarker extends RectangularMarker {
   type: MarkerType = 'text';
@@ -66,7 +67,11 @@ export class TextMarker extends RectangularMarker {
     this.visual.addEventListener('touchstart', this.onTap);
   }
 
-  protected resize(x: number, y: number, onPosition?: (pos: PositionType) => void) {
+  protected resize(
+    x: number,
+    y: number,
+    onPosition?: (pos: PositionType) => void,
+  ) {
     super.resize(x, y, onPosition);
 
     this.sizeText();
@@ -84,7 +89,12 @@ export class TextMarker extends RectangularMarker {
       if (line.trim() === '') {
         line = ' '; // workaround for swallowed empty lines
       }
-      this.textElement.appendChild(SvgHelper.createTSpan(line, [['x', '0'], ['dy', LINE_SIZE]]));
+      this.textElement.appendChild(
+        SvgHelper.createTSpan(line, [
+          ['x', '0'],
+          ['dy', LINE_SIZE],
+        ]),
+      );
     }
 
     setTimeout(this.sizeText, 10);
@@ -177,7 +187,7 @@ export class TextMarker extends RectangularMarker {
       target: 'marker',
       id: this.id,
       event: 'inputMarker',
-      marker: { text: this.text }
+      marker: { text: this.text },
     });
 
     this.renderText();

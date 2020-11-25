@@ -20,7 +20,7 @@ export class ToolbarItem {
     draggable,
     markerType,
     onRender,
-    onClick
+    onClick,
   }: Partial<ToolbarItem>) {
     if (!name) {
       throw new Error('Invalid params');

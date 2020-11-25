@@ -1,3 +1,3 @@
-import * as uuidV1 from 'uuid/v1';
+import { genId } from '@m-fe/utils';
 
-export const uuid = uuidV1;
+export const uuid = genId;

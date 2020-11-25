@@ -1,39 +1,13 @@
 {
+  "extends": "@m-fe/tsconfig/tsconfig.json",
   "compilerOptions": {
-    "baseUrl": "packages",
-    "lib": ["es6", "es7", "dom", "scripthost", "webworker"],
-    "jsx": "react",
-    "target": "es5",
-    "module": "commonjs",
-    "moduleResolution": "node",
-    "sourceMap": true,
-    "allowJs": false,
-    "outDir": "dist",
-    "experimentalDecorators": true,
-    "forceConsistentCasingInFileNames": true,
-    "removeComments": true,
-    "noImplicitReturns": true,
-    "noImplicitThis": true,
-    "noImplicitAny": true,
-    "allowUnusedLabels": true,
-    "strictNullChecks": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "noUnusedLocals": true,
-    "allowSyntheticDefaultImports": true,
-    "skipLibCheck": true,
-    "paths": {}
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["packages/rtw-host-app/src/*"]
+    },
+    "strictFunctionTypes": false,
+    "strictNullChecks": false,
+    "suppressImplicitAnyIndexErrors": true
   },
-  "include": ["**/*.js", "**/*.ts", "**/*.tsx"],
-  "exclude": [
-    "assets",
-    "build",
-    "dist",
-    "indep-pkgs",
-    "node_modules",
-    "scripts",
-    "ssr",
-    "stories",
-    "__test__",
-    "test"
-  ]
+  "include": ["**/*.ts", "**/*.tsx"]
 }

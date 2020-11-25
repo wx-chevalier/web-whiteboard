@@ -12,6 +12,6 @@ for file in *; do
 
     echo "cd $file";
     cd ./$file
-    ncu -u
+    yarn run lint
     cd ..
 done

@@ -1,12 +1,17 @@
 {
-  "name": "webpack-react-ts",
+  "name": "@m-fe/libs",
   "version": "0.0.1",
-  "description": "Micro-Frontend Boilerplate, with React & TS & Webpack",
+  "description": "Micro-Frontend Libs, with React & TS & Webpack",
   "repository": {
     "type": "git",
-    "url": "https://github.com/wxyyxc1992/fe-boilerplate"
+    "url": "https://github.com/wx-chevalier/m-fe-libs"
   },
+  "author": "wx-chevalier@github",
   "license": "MIT",
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ],
   "keywords": [
     "react",
     "redux",
@@ -14,77 +19,50 @@
     "webpack",
     "typescript"
   ],
-  "author": "wxyyxc1992@github",
-  "prettier": {
-    "printWidth": 100,
-    "singleQuote": true
-  },
-  "lint-staged": {
-    "*.{ts,tsx,scss,less,md}": [
-      "prettier --write",
-      "git add"
-    ]
-  },
   "scripts": {
-    "bootstrap": "npm run clean && yarn install",
-    "build": "npm run clean && yarn workspaces run build",
-    "clean": "yarn workspaces run clean",
-    "cleanCov": "rimraf @coverage",
-    "dev": "webpack-dev-server --config ./scripts/webpack/webpack.config.dev.js --hot",
-    "lint": "tslint -c tslint.json 'src/**/*.(ts|tsx)'",
-    "precommit": "lint-staged",
-    "prettier-all": "prettier --write 'src/**/*' '!src/{assets,datas}/**'",
-    "start": "webpack-dashboard -- npm run dev",
-    "test": "jest --config ./scripts/jest/jest.config.js",
-    "test:watch": "npm test -- --watch",
-    "test:cov": "npm run cleanCov && npm test -- --coverage",
+    "bootstrap": "yarn install && yarn run build",
+    "build": "npm run clean && yarn workspaces run build && cp -r ./packages/app-lib/build/ ./build",
+    "clean": "rm -rf ./build && yarn workspaces run clean",
+    "clean:cov": "yarn workspaces run clean:cov",
+    "dev": "npm start",
+    "lint": "./scripts/tools/lint_pkgs.sh",
+    "lint-staged": "lint-staged",
+    "postinstall": "node ./node_modules/husky/lib/installer/bin install",
+    "prettier-all": "prettier --write 'packages/**/src/**/*.{ts,tsx}' '!src/{assets,datas}/**'",
+    "start": "(cd packages/app-lib && npm start)",
+    "test": "yarn workspaces run test",
+    "test:cov": "yarn workspaces run test:cov",
+    "test:watch": "yarn workspaces run test:watch",
     "upgrade": "./scripts/tools/upgrade_pkgs.sh"
   },
   "devDependencies": {
-    "@types/jest": "24.0.9",
-    "@types/react-dom": "^16.8.2",
-    "autoprefixer": "9.4.10",
-    "awesome-typescript-loader": "^5.2.1",
-    "copy-webpack-plugin": "^5.0.0",
-    "css-loader": "2.1.1",
-    "enzyme": "^3.9.0",
-    "file-loader": "3.0.1",
-    "fork-ts-checker-webpack-plugin": "^1.0.0",
-    "html-webpack-plugin": "^3.2.0",
-    "html-webpack-template": "^6.2.0",
-    "jest": "24.3.1",
-    "jest-cli": "24.3.1",
-    "json-server": "0.14.2",
-    "lerna": "^3.13.1",
-    "less": "^3.9.0",
-    "less-loader": "^4.1.0",
-    "mini-css-extract-plugin": "^0.5.0",
-    "optimize-css-assets-webpack-plugin": "5.0.1",
-    "parallelshell": "^3.0.2",
-    "postcss-loader": "3.0.0",
-    "react-hot-loader": "^4.8.0",
-    "resolve-url-loader": "3.0.1",
-    "rimraf": "^2.6.3",
-    "style-loader": "0.23.1",
-    "ts-jest": "^24.0.0",
-    "ts-loader": "5.3.3",
-    "tsconfig-paths-webpack-plugin": "^3.2.0",
-    "tslint": "^5.13.1",
-    "tslint-config-prettier": "^1.18.0",
-    "tslint-react": "^3.6.0",
-    "typescript": "3.3.3333",
-    "uglifyjs-webpack-plugin": "2.1.2",
-    "url-loader": "^1.1.2",
-    "wasm-loader": "^1.3.0",
-    "webpack": "^4.29.6",
-    "webpack-cli": "3.2.3",
-    "webpack-dashboard": "3.0.0",
-    "webpack-dev-server": "^3.2.1",
-    "workerize-loader": "^1.0.4"
+    "@m-fe/app-config": "^0.7.1",
+    "@svgr/webpack": "^5.4.0",
+    "prettier": "^2.2.0"
   },
-  "private": true,
-  "workspaces": [
-    "packages/fc-whiteboard",
-    "packages/fc-whiteboard-react"
-  ]
+  "browserslist": [
+    "extends @m-fe/browserslist-config"
+  ],
+  "commitlint": {
+    "extends": [
+      "@m-fe"
+    ]
+  },
+  "remarkConfig": {
+    "plugins": [
+      "@m-fe/remark-config"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "@m-fe/stylelint-config",
+      "@m-fe/stylelint-config/modules"
+    ],
+    "rules": {
+      "font-family-no-missing-generic-family-keyword": null,
+      "no-descending-specificity": null,
+      "plugin/no-unsupported-browser-features": null,
+      "plugin/no-low-performance-animation-properties": null
+    }
+  }
 }
